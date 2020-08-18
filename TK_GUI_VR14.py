@@ -46,7 +46,7 @@ def dc_loadline():
 
 
 def about_message():
-    mb.showinfo("About", "IFX VR14 GUI 2020/08/18", detail="https://github.com/ifxgceason/IFX_Gen5_VR14")
+    mb.showinfo("About", "IFX VR14 GUI 2020/08/18", detail="https://github.com/ifxgceason/Gen5_VR14")
 
      
 app = tk.Tk()
