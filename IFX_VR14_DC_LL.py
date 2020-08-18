@@ -51,15 +51,7 @@ data=DataAPI()
 
 # define function
 # eason.chen@infineon.com
-#get svid regsister value.
-'''
-def getsvidregvalue(svid_addr,svid_bus,svid_data):
-    data.SetSvidCmdWrite(svid_addr,7,svid_data,svid_bus,5,2,0,3)
-    result=data.GetSvidData()
-    regvalue=result.SVRData
-    data.GetSvidData()
-    return regvalue
-'''
+
 #What Rails are available?
 def check_rails_avaliable():
     print("Displaying rails available")
@@ -72,27 +64,7 @@ def check_rails_avaliable():
             for k in t[i].ProtoParm.Keys:
                     print("      ", k, " ", t[i].ProtoParm[k])
     return None
-'''
-def get_all_svid_reg(svid_addr,svid_bus,svid_reg_dict):
-              
-
-    svid_reg_value=dict()
-    for key in svid_reg_dict:
-        time.sleep(0.5)
-        try:
-            value=getsvidregvalue(svid_addr,svid_bus,svid_reg_dict[key])
-            svid_reg_value[key]=int(value,16)
-        except TypeError:
-            value=getsvidregvalue(svid_addr,svid_bus,svid_reg_dict[key])
-            svid_reg_value[key]=int(value,16)
-            
-        if len(key) <8:
-            print(key+"\t\t\t"+"= "+str(value)+"h")
-        else:
-            print(key+"\t\t"+"= "+str(value)+"h")
-    svid_reg_value['Icc_Max_Value']=svid_reg_value['Icc_Max']*4
-    return svid_reg_value
-'''	
+	
 def dcLoadlinetest(DRIVE_ONE_RAIL,svid_bus,svid_addr,Vout,Iout_currents,dtime,svid_reg_value):
     
     results=pd.DataFrame()

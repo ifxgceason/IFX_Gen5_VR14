@@ -55,60 +55,6 @@ from openpyxl.chart import (
     Reference,
     Series,
 )
-#///////////////////////////////////////////////////////////////////////////////
-#// Intel Example Script  Version 1.1
-#//
-#//     "3D" Frequency and Duty Cycle Sweep Test for the Gen5 VR Test Tool
-#//
-#//     This script will sweep a range of frequencies on a given voltage rail
-#// at a specified load step. Additionally, at each frequency step the script
-#// will sweep the load step duty cycle from 10% to 90% in 10% increments. Data
-#// for VMin/VMax, Overshoot, Undershoot, Vpeak-to-peak, and duty cycle are
-#// collected at each frequency step, and are stored in an Excel file.
-#// 
-#// Configurable parameters are listed below.
-#//
-#// Output to Excel will be on a sheet titled "3D". Parameters are displayed in
-#// columns A & B. Data is stored in columns D - J, with label headers in row 1.
-#//
-#//
-#// Revision History
-#//
-#//     1.0     Initial version.
-#//     1.1     Removed dependency on MeasurementItems library. Added VMin/VMax
-#//             measurement to the output.
-#//
-#///////////////////////////////////////////////////////////////////////////////
-
-def getsvidregvalue(svid_addr,svid_bus,svid_data):
-    data.SetSvidCmdWrite(svid_addr,7,svid_data,svid_bus,5,2,0,3)
-    result=data.GetSvidData()
-    regvalue=result.SVRData
-    data.GetSvidData()
-    return regvalue
-'''
-
-VR14_dict={"VCCIN":[0,0],
-       "VCCINFAON":[1,0],
-       "VCCFA_EHV":[2,0],
-       "VCCFA_EHV_FIVRA":[3,0],
-       "VNN":[0,1],
-       "VCCD_HV":[1,1]
-      }
-
-svid_reg_dict={'Pin_Max':0x2E,
-       'Pin_Max_Add':0x51,
-       'Icc_Max':0x21,
-       'Icc_Max_Add':0x50,
-       'DC_LL':0x23,
-       'DC_LL_Fine':0x36,
-       'Capability':0x6,
-       'Protocol_id':0x5,
-       'ext_capability':0x9,
-       'VR14_capability':0x50,
-       'VIDo_max':0x0A}
-'''
-
 
 def vr14_3d(rail_name="VCCIN",
             vout=1.83,
@@ -123,16 +69,11 @@ def vr14_3d(rail_name="VCCIN",
             end_duty=50,
             duty_step=10,
             excel=True):
+    
     print(f"dll verison = {ifx.version()}")
     #detect Infinon device
     svid_addr,svid_bus=ifx.rail_name_to_svid_parameter(rail_name)
-    vendor_id=ifx.getsvidregvalue(svid_addr,svid_bus,00)
-    if vendor_id != "13":
-        print(f"vendor Id={vendor_id}")
-        print("this is not Infineon device")
-        time.sleep(3)
-        #sys.exit()
-
+    ifx.getsvidregvalue(svid_addr,svid_bus,0x15)
     duty_cycle_list=list(range(start_duty,end_duty+1,duty_step))
     ScriptVersion = 1.1
 
@@ -303,7 +244,7 @@ def vr14_3d(rail_name="VCCIN",
 
     
 if __name__ == "__main__":
-    vr14_3d(rail_name="VCCINFAON",
+    vr14_3d(rail_name="VCCIN",
             vout=1.1,
             start_freq=0.1,
             end_freq=100,
