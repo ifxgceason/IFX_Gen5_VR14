@@ -198,7 +198,76 @@ def dcLoadlinetest(DRIVE_ONE_RAIL,svid_bus,svid_addr,Vout,Iout_currents,dtime,sv
             gen.Generator2SVSC("VCCFAEHVFIVRANE",0, True)
             gen.Generator3SVSC("VCCFAEHVFIVRASW",0, True)
             gen.Generator4SVSC("VCCFAEHVFIVRASE",0, True)
+
+    elif rail_name=="PVCCD_HV":
+        
+        gen.AssignRailToDriveOne("PVCC_HV")
+        gen.AssignRailToDriveTwo("PVCCDHV0123")
+        gen.AssignRailToDriveThree("PVCCDHV4567")
+        gen.SetVoltageForRail("PVCCD_HV", Vout, Transition.Fast)
+        for Iout_current in Iout_currents:
+            PVCCDHV_list=["PVCCHD0123","PVCCDHV4567"]
+            #EHV_FIVRA_load_dict={"VCCFA_EHV_FIVRA_NW":"VCCFAEHVFIVRANW","VCCFA_EHV_FIVRA_NE":"VCCFAEHVFIVRANE","VCCFA_EHV_FIVRA_SW":"VCCFAEHVFIVRASW","VCCFA_EHV_FIVRA_SE":"VCCFAEHVFIVRASE"}
+            # Set the subcurrent for EHV_FIVRA only
+            Iout_EHV=0
+            gen.Generator1SVSC("PVCCD_HV", 0, True)
+            gen.Generator2SVSC("PVCCDHV0123", Iout_current/2, True)
+            gen.Generator3SVSC("PVCCDHV4567", Iout_current/2, True)        
+                   
             
+            print("====")
+            print(f'Iout={Iout_current}Amps')
+            # Reset the max and min
+            time.sleep(1)
+            
+            Measurment.ResetPersistentVoltageMeasurement(DRIVE_ONE_RAIL)
+
+            time.sleep(1)
+       
+            Vout = Measurment.GetVoltageMeanOnce(DRIVE_ONE_RAIL)
+            
+            
+            tt = Measurment.GetEPodOnce(DRIVE_ONE_RAIL)
+
+            #get vout ripple
+            raw_measurement = Measurment.GetPersistentVoltageMinMaxOnce(DRIVE_ONE_RAIL)
+            phigh = float(raw_measurement.split()[1][:-1])
+            plow = float(raw_measurement.split()[3][:-1])
+            Vripple = float((phigh - plow)*1000) #change to mV
+            time.sleep(0.2)
+            
+            ## Get PWR_IN(1Bh)
+            PWR_IN=ifx.getsvidregvalue(svid_addr,svid_bus,0x1B)
+            time.sleep(0.2)
+            
+            ## Get SVID_Iout(15h)
+            SVID_Iout=ifx.getsvidregvalue(svid_addr,svid_bus,0x15)
+            time.sleep(0.2)
+
+            ## Get SVID_Iout(71h)
+            SVID_Iout_71h=ifx.getsvidregvalue(svid_addr,svid_bus,0x71)
+
+            ## set reg to Python list
+            result_temp['Iout']=Iout_current
+            result_temp['Vout']=float(Vout.replace("V",""))
+            result_temp['Ripple']=float(Vripple)
+            result_temp['Input Voltage']=0
+            result_temp['Read PWR_IN']=PWR_IN
+            result_temp['Read Iout 15h']=SVID_Iout
+            result_temp['Read Iout 71h']=SVID_Iout_71h
+
+
+            ##add list to pd
+            results=results.append(result_temp,ignore_index=True)
+            results=pd.DataFrame(results,columns=['Iout','Vout','Ripple','Input Voltage','Read PWR_IN','Read Iout 15h','Read Iout 71h','''"Iout_Value"'''])
+            print(f"trun off loading and cooling {dtime}Sec") 
+            
+            time.sleep(dtime)
+            
+            time.sleep(dtime)
+            gen.Generator2SVSC("PVCCDHV0123",0, True)
+            gen.Generator3SVSC("PVCCDHV4567",0, True)
+
     else:
         for Iout_current in Iout_currents:
             
@@ -304,7 +373,7 @@ def vr14_ifx_dc(rail_name="VCCIN",vout_list=[1.83,1.73],icc_max=100,cool_down_de
 if __name__ == "__main__":
 
 
-     vr14_ifx_dc("VCCINFAON",[1.0,0.9],136,2,[0,7,14],excel=True)
+     vr14_ifx_dc("PVCCD_HV",[1.1],136,2,[0,1.3,3,5,8,10,13,16,18,21,23,26],excel=True)
     
     
 
