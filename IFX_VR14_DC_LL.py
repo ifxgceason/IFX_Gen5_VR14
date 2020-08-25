@@ -66,7 +66,7 @@ def check_rails_avaliable():
     return None
 	
 def dcLoadlinetest(DRIVE_ONE_RAIL,svid_bus,svid_addr,Vout,Iout_currents,dtime,svid_reg_value):
-    
+    MeasurementAPI().ClearAllMeasurements()
     results=pd.DataFrame()
     # Change Fan Speed
     data.SetFanSpeed(10)
@@ -257,51 +257,54 @@ def dcLoadlinetest(DRIVE_ONE_RAIL,svid_bus,svid_addr,Vout,Iout_currents,dtime,sv
     
     return results
 
-def vr14_ifx_dc(rail_name="VCCIN",vout=1.83,icc_max=100,cool_down_delay=1,LL_point=[1,3,5,7],excel=True):
+def vr14_ifx_dc(rail_name="VCCIN",vout_list=[1.83,1.73],icc_max=100,cool_down_delay=1,LL_point=[1,3,5,7],excel=True):
         print(f"dll verison = {ifx.version()}")
 
-        svid_reg_dict={'Pin_Max':0x2E,
-               'Pin_Max_Add':0x51,
-               'Icc_Max':0x21,
-               'Icc_Max_Add':0x50,
-               'DC_LL':0x23,
-               'DC_LL_Fine':0x36,
-               'Capability':0x6,
-               'Protocol_id':0x5,
-               'ext_capability':0x9,
-               'VR14_capability':0x50,
-               'VIDo_max':0x0A}
-        svid_addr,svid_bus=ifx.rail_name_to_svid_parameter(rail_name)    
-        svid_reg_value=ifx.get_all_svid_reg(svid_addr,svid_bus,svid_reg_dict)
-        Iout=list() 
+        for vout in vout_list:
+            svid_reg_dict={'Pin_Max':0x2E,
+                   'Pin_Max_Add':0x51,
+                   'Icc_Max':0x21,
+                   'Icc_Max_Add':0x50,
+                   'DC_LL':0x23,
+                   'DC_LL_Fine':0x36,
+                   'Capability':0x6,
+                   'Protocol_id':0x5,
+                   'ext_capability':0x9,
+                   'VR14_capability':0x50,
+                   'VIDo_max':0x0A}
+            svid_addr,svid_bus=ifx.rail_name_to_svid_parameter(rail_name)    
+            svid_reg_value=ifx.get_all_svid_reg(svid_addr,svid_bus,svid_reg_dict)
+            Iout=list() 
 
-    
-        theTime = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        filename="IFX-VR-"+rail_name+str(vout)+"-V_"+theTime+".xlsx"
-        dtime=cool_down_delay
+        
+            theTime = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+            filename="IFX-VR-"+rail_name+"-"+str(vout)+"V_"+theTime+".xlsx"
+            dtime=cool_down_delay
 
-        Iout=LL_point
-        df2=dcLoadlinetest(rail_name,svid_bus,svid_addr,vout,Iout,dtime,svid_reg_value)
-        svid_reg_df=pd.DataFrame.from_dict(svid_reg_dict,orient='index',columns=['svid_command_code'])
-        svid_reg_df=svid_reg_df.reset_index()
-        svid_reg_df['svid_command_code']=svid_reg_df['svid_command_code'].apply(int).apply(hex).apply(str)
-        
-        df1=pd.DataFrame.from_dict(svid_reg_value,orient='index',columns=['svid_reg_value'])
-        df1["svid_reg_value"]=df1["svid_reg_value"].apply(int).apply(hex).apply(str)
-        #df1=df1.drop(['Value'],axis=1)
-        df1=df1.reset_index()
-        
-        df3=pd.concat([svid_reg_df,df1],axis=1)
-        #df1.rename(columns={'index':'command','Hex':'abc'})
-        
-        ifx.df1_df2_to_excel(df3,df2,filename)
+            Iout=LL_point
+            df2=dcLoadlinetest(rail_name,svid_bus,svid_addr,vout,Iout,dtime,svid_reg_value)
+            svid_reg_df=pd.DataFrame.from_dict(svid_reg_dict,orient='index',columns=['svid_command_code'])
+            svid_reg_df=svid_reg_df.reset_index()
+            svid_reg_df['svid_command_code']=svid_reg_df['svid_command_code'].apply(int).apply(hex).apply(str)
+            
+            df1=pd.DataFrame.from_dict(svid_reg_value,orient='index',columns=['svid_reg_value'])
+            df1["svid_reg_value"]=df1["svid_reg_value"].apply(int).apply(hex).apply(str)
+            #df1=df1.drop(['Value'],axis=1)
+            df1=df1.reset_index()
+            
+            df3=pd.concat([svid_reg_df,df1],axis=1)
+            #df1.rename(columns={'index':'command','Hex':'abc'})
+            
+            ifx.df1_df2_to_excel(df3,df2,filename,"Reg value","LoadLine")
 
-        ifx.excelSelect(filename,excel)
+            ifx.excelSelect(filename,excel)
+
+        print("completed")
 
 if __name__ == "__main__":
 
 
-     vr14_ifx_dc("VCCFA_EHV_FIVRA",1.8,136,1,[0,7,14,27,41,54,68,82,95,109,122,136],excel=True)
+     vr14_ifx_dc("VCCINFAON",[1.0,0.9],136,2,[0,7,14],excel=True)
     
     
 

@@ -5,24 +5,22 @@ import IFX_VR14_DC_LL
 
 def func_3d():
     
-    if True :
-        rail_name=variable.get()
-        start_freq=float(input_text2.get())
-        end_freq=float(input_text3.get())
-        icc_min=int(input_text4.get())
-        icc_max=int(input_text5.get())
-        freq_steps_per_decade=int(input_text6.get())
-        rise_time=int(input_text7.get())
-        cool_down_delay=int(input_text8.get())
-        start_duty=int(input_text9.get())
-        end_duty=int(input_text10.get())
-        duty_step=int(input_text11.get())
-        vout=float(input_text12.get())
-        excel=bool(input_checkbox_14.get())
-        IFX_VR14_3D.vr14_3d(rail_name,vout,start_freq,end_freq,icc_min,icc_max,freq_steps_per_decade,rise_time,cool_down_delay,start_duty,end_duty,duty_step)
 
-    else:
-        resultString.set("error")
+    rail_name=variable.get()
+    start_freq=float(input_text2.get())
+    end_freq=float(input_text3.get())
+    icc_min=int(input_text4.get())
+    icc_max=int(input_text5.get())
+    freq_steps_per_decade=int(input_text6.get())
+    rise_time=int(input_text7.get())
+    cool_down_delay=int(input_text8.get())
+    start_duty=int(input_text9.get())
+    end_duty=int(input_text10.get())
+    duty_step=int(input_text11.get())
+    vout=eval(input_text12.get())
+    excel=bool(input_checkbox_14.get())
+    IFX_VR14_3D.vr14_3d(rail_name,vout,start_freq,end_freq,icc_min,icc_max,freq_steps_per_decade,rise_time,cool_down_delay,start_duty,end_duty,duty_step)
+
         
 def dc_loadline():
     rail_name=variable.get()
@@ -36,7 +34,7 @@ def dc_loadline():
     start_duty=int(input_text9.get())
     end_duty=int(input_text10.get())
     duty_step=int(input_text11.get())
-    vout=float(input_text12.get())
+    vout=eval(input_text12.get())
     LL_point=eval(input_text13.get())
     excel=bool(input_checkbox_14.get())
     IFX_VR14_DC_LL.vr14_ifx_dc(rail_name,vout,icc_max,cool_down_delay,LL_point,excel)
@@ -46,7 +44,7 @@ def dc_loadline():
 
 
 def about_message():
-    mb.showinfo("About", "IFX VR14 GUI 2020/08/18", detail="https://github.com/ifxgceason/Gen5_VR14")
+    mb.showinfo("About", "IFX VR14 GUI 2020/08/21", detail="https://github.com/ifxgceason/Gen5_VR14")
 
      
 app = tk.Tk()
@@ -132,7 +130,7 @@ label_15.grid(column=i, row=j+14, sticky=tk.W)
 #set input text box 1
 variable=tk.StringVar(app)
 variable.set("VCCIN")
-optionmenu=tk.OptionMenu(app,variable,"VCCIN","VCCINFAON","VCCFA_EHV","VCCFA_EHV_FIVRA","VNN","VCCD_HV")
+optionmenu=tk.OptionMenu(app,variable,"VCCIN","VCCINFAON","VCCFA_EHV","VCCFA_EHV_FIVRA","VCCD_HV")
 optionmenu.grid(column=i+1,row=j)
 
 
@@ -168,7 +166,7 @@ entryVstart = tk.Entry(app, width=10, textvariable=input_text7)
 entryVstart.grid(column=i+1, row=j+6, padx=20)
 
 #set input test box 8
-input_text8 = tk.StringVar(value="1")
+input_text8 = tk.StringVar(value="2")
 entrystartPS = tk.Entry(app, width=10, textvariable=input_text8)
 entrystartPS.grid(column=i+1, row=j+7, padx=20)
 
@@ -188,7 +186,7 @@ entryIoutStep = tk.Entry(app, width=10, textvariable=input_text11)
 entryIoutStep.grid(column=i+1, row=j+10, padx=20)
 
 #set input text box 12
-input_text12 = tk.StringVar(value="1.83")
+input_text12 = tk.StringVar(value="[1.83,1.73]")
 entryIoutStep = tk.Entry(app, width=10, textvariable=input_text12)
 entryIoutStep.grid(column=i+1, row=j+11, padx=20)
 
