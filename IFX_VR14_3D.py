@@ -231,13 +231,15 @@ def vr14_3d(rail_name="VCCIN",
         # Next Frequency
 
         df=pd.DataFrame(result,columns=["Frequency","DutyCycleList","VOvershoot","VUndershoot","Vpp","VMin","VMax"])
-
+        df_vmax=df.sort_values(['VMax'],ascending=False)
+        df_vmin=df.sort_values(['VMin'],ascending=True)
         # Switch back to SVDC mode and turn off the load...
         gen.Generator1SVSC(rail_name, 0, False)
         dat.SetFanSpeed(1)
 
         # Save the output file...
-        df.to_excel(file_name)
+        ifx.df1_df2_to_excel(df_vmax,df_vmin,file_name,sheet_name1="Vmax",sheet_name2="Vmin")
+        #df.to_excel(file_name)
 
         print("Test completed. Data saved to:  ", file_name)
         ifx.excelSelect(file_name,excel)
@@ -246,13 +248,13 @@ def vr14_3d(rail_name="VCCIN",
 
     
 if __name__ == "__main__":
-    vr14_3d(rail_name="VCCINFAON",
-            vout_list=[1,0.88],
+    vr14_3d(rail_name="VCCIN",
+            vout_list=[1.83],
             start_freq=0.1,
-            end_freq=3,
-            icc_min=20,
-            icc_max=33,
-            freq_steps_per_decade=2,
+            end_freq=20,
+            icc_min=61,
+            icc_max=405,
+            freq_steps_per_decade=7,
             rise_time=2000,
             cool_down_delay=0,
             start_duty=10,
