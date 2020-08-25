@@ -130,7 +130,7 @@ label_15.grid(column=i, row=j+14, sticky=tk.W)
 #set input text box 1
 variable=tk.StringVar(app)
 variable.set("VCCIN")
-optionmenu=tk.OptionMenu(app,variable,"VCCIN","VCCINFAON","VCCFA_EHV","VCCFA_EHV_FIVRA","VCCD_HV")
+optionmenu=tk.OptionMenu(app,variable,"VCCIN","VCCINFAON","VCCFA_EHV","VCCFA_EHV_FIVRA","PVCCD_HV")
 optionmenu.grid(column=i+1,row=j)
 
 
