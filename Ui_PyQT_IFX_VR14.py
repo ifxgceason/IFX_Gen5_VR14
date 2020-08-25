@@ -342,7 +342,7 @@ class Ui_MainWindow(object):
         self.comboBox.setItemText(3, _translate("MainWindow", "VCCFA_EHV_FIVRA"))
         self.comboBox.setItemText(4, _translate("MainWindow", "PVCCD_HV"))
         self.menu2020_08_22.setTitle(_translate("MainWindow", "2020.08.22"))
-import resource_rc
+#import resource_rc
 
 
 if __name__ == "__main__":

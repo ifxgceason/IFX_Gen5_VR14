@@ -7,7 +7,8 @@ import time
 import datetime
 import os
 import pandas as pd
-#import IFX_VR14_DC_LL
+import IFX_VR14_DC_LL
+import IFX_VR14_3D
 
 class dc_thread(QThread):
     dc_to_enable_abort = pyqtSignal(bool)    
@@ -19,12 +20,8 @@ class dc_thread(QThread):
         self.wait()
     def run(self):
         self.dc_to_enable_abort.emit(True)
-        #IFX_VR14_DC_LL.vr14_ifx_dc(myWin.rail_name,myWin.vout_list,1,myWin.cool_down_delay,myWin.iout_list,myWin.excel)
-        for i in range(1000):
-            self.dc_to_enable_abort.emit(True)
-            print(f"thread {myWin.iout_list}")
-            
-            time.sleep(0.01)
+        IFX_VR14_DC_LL.vr14_ifx_dc(myWin.rail_name,myWin.vout_list,1,myWin.cool_down_delay,myWin.iout_list,myWin.excel)
+        #print("DC")
     def stop(self):
         self.terminate()
 
@@ -35,11 +32,9 @@ class vr3d_thread(QThread):
     def __del__(self):
         self.wait()
     def run(self):
-        #IFX_VR14_DC_LL.vr14_ifx_dc(myWin.rail_name,myWin.vout_list,1,myWin.cool_down_delay,myWin.iout_list,myWin.excel)
-        for i in range(10):
-            self.vr3d_to_enable_abort.emit(True)
-            print(f"thread {myWin.vout_list}")
-            time.sleep(0.01)
+        #print(f"{myWin.vout_list_3d},{myWin.start_freq},{myWin.end_freq},{myWin.rise_time},{myWin.fall_time},{myWin.icc_min},{myWin.icc_max},{myWin.freq_steps_per_decade},{myWin.duty_step},{myWin.duty_step},{myWin.start_duty},{myWin.end_duty},{myWin.cool_down_delay_3d}")
+        IFX_VR14_3D.vr14_3d(myWin.rail_name,myWin.vout_list_3d,myWin.start_freq,myWin.end_freq,myWin.icc_min,myWin.icc_max,myWin.freq_steps_per_decade,myWin.rise_time,myWin.cool_down_delay,myWin.start_duty,myWin.end_duty,myWin.duty_step,myWin.excel)
+        
     def stop(self):
         self.terminate()
 
@@ -68,6 +63,19 @@ class MyMainWindow(QMainWindow,Ui_PyQT_IFX_VR14.Ui_MainWindow):
         self.cool_down_delay=int(self.lineEdit_14.text())
         self.excel=self.checkBox_2.isChecked()
 
+        ##get GUI import for 3D parameter      
+        self.vout_list_3d=eval(self.lineEdit_16.text())
+        self.start_freq=float(self.lineEdit.text())
+        self.end_freq=int(self.lineEdit_2.text())
+        self.rise_time=int(self.lineEdit_6.text())
+        self.fall_time=int(self.lineEdit_12.text())
+        self.icc_min=int(self.lineEdit_4.text())
+        self.icc_max=int(self.lineEdit_3.text())
+        self.freq_steps_per_decade=int(self.lineEdit_5.text())
+        self.duty_step=int(self.lineEdit_9.text())
+        self.start_duty=int(self.lineEdit_8.text())
+        self.end_duty=int(self.lineEdit_7.text())
+        self.cool_down_delay_3d=int(self.lineEdit_15.text())
     def vr3d_function(self):
         self.update_GUI()
         self.vr3d.start()
