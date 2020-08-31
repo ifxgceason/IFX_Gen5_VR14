@@ -64,6 +64,40 @@ def check_rails_avaliable():
             for k in t[i].ProtoParm.Keys:
                     print("      ", k, " ", t[i].ProtoParm[k])
     return None
+
+def thermal_drop(rail_name,vout_list,iout,thermal_time_list=[0,10,300,600]):
+    results=pd.DataFrame()
+    result_temp={}
+    for vid in vout_list:
+        MeasurementAPI().ClearAllMeasurements()
+        gen.Generator1SVSC(rail_name,0, True)
+        gen.AssignRailToDriveOne(rail_name)
+        gen.SetVoltageForRail(rail_name,vid,Transition.Fast)
+        results=pd.DataFrame()
+        Measurment.MeasureCurrentMean(rail_name)
+        Measurment.MeasureVoltageMean(rail_name)
+        
+        print(f"thermal test in {thermal_time_list}Sec")
+        print(datetime.datetime.now())
+        gen.Generator1SVSC(rail_name,iout, True)
+        vout = Measurment.GetVoltageMeanOnce(rail_name)
+        time.sleep(1)
+        for sleep_time in thermal_time_list:
+            print(f"please wait {sleep_time}Sec")
+            time.sleep(sleep_time)
+            vout = Measurment.GetVoltageMeanOnce(rail_name)
+            result_temp['Time']=sleep_time
+            result_temp['Vout']=vout
+            result_temp['VID']=vid
+            print(f"time={sleep_time},vout={vout}")
+            results=results.append(result_temp,ignore_index=True)
+            results=pd.DataFrame(results,columns=['Time','Vout','VID'])
+
+    print("thermal test completed")
+    gen.Generator1SVSC(rail_name,0, False)
+    
+    return results
+                         
 	
 def dcLoadlinetest(DRIVE_ONE_RAIL,svid_bus,svid_addr,Vout,Iout_currents,dtime,svid_reg_value):
     MeasurementAPI().ClearAllMeasurements()
@@ -373,7 +407,7 @@ def vr14_ifx_dc(rail_name="VCCIN",vout_list=[1.83,1.73],icc_max=100,cool_down_de
 if __name__ == "__main__":
 
 
-     vr14_ifx_dc("PVCCD_HV",[1.1],136,2,[0,1.3,3,5,8,10,13,16,18,21,23,26],excel=True)
+     vr14_ifx_dc("VCCIN",[1.8],136,2,[0,1.3,3,5,8,10,13,16,18,21,23,26],excel=True)
     
     
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1213</width>
-    <height>762</height>
+    <width>1763</width>
+    <height>901</height>
    </rect>
   </property>
   <property name="sizeIncrement">
@@ -34,7 +34,7 @@
     </property>
     <widget class="QPushButton" name="pushButton">
      <property name="enabled">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="geometry">
       <rect>
@@ -164,7 +164,7 @@
       <item row="0" column="1">
        <widget class="QLineEdit" name="lineEdit_16">
         <property name="text">
-         <string>[1,0.8]</string>
+         <string>1,0.8</string>
         </property>
        </widget>
       </item>
@@ -243,7 +243,7 @@
    </widget>
    <widget class="QPushButton" name="pushButton_7">
     <property name="enabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
@@ -302,7 +302,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string>Misc</string>
     </property>
     <widget class="QLineEdit" name="lineEdit_13">
      <property name="enabled">
@@ -379,7 +379,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>GroupBox</string>
+     <string>others</string>
     </property>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
@@ -438,44 +438,19 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>190</y>
+      <y>240</y>
       <width>741</width>
-      <height>111</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="title">
      <string>DC LL line</string>
     </property>
-    <widget class="QCheckBox" name="checkBox_2">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>640</x>
-       <y>80</y>
-       <width>101</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="text">
-      <string>Open by Excel</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>13</x>
-       <y>29</y>
+       <x>10</x>
+       <y>20</y>
        <width>721</width>
        <height>53</height>
       </rect>
@@ -491,7 +466,7 @@
       <item row="0" column="1">
        <widget class="QLineEdit" name="lineEdit_10">
         <property name="text">
-         <string>[1,0.8]</string>
+         <string>1,0.8</string>
         </property>
        </widget>
       </item>
@@ -511,6 +486,9 @@
       </item>
       <item row="0" column="4" rowspan="2">
        <widget class="QPushButton" name="pushButton_2">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>LoadLine tset</string>
         </property>
@@ -526,7 +504,7 @@
       <item row="1" column="1" colspan="3">
        <widget class="QLineEdit" name="lineEdit_11">
         <property name="text">
-         <string>[10,20,30]</string>
+         <string>10,20,30</string>
         </property>
        </widget>
       </item>
@@ -536,10 +514,10 @@
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>30</y>
-      <width>121</width>
-      <height>31</height>
+      <x>20</x>
+      <y>20</y>
+      <width>151</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="font">
@@ -548,16 +526,22 @@
      </font>
     </property>
     <property name="text">
-     <string>IFX VR GUI</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>IFX_LOGO_RGB.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QGroupBox" name="groupBox_5">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>90</y>
-      <width>411</width>
-      <height>91</height>
+      <x>450</x>
+      <y>100</y>
+      <width>301</width>
+      <height>131</height>
      </rect>
     </property>
     <property name="title">
@@ -567,9 +551,9 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>20</y>
-       <width>391</width>
-       <height>61</height>
+       <y>21</y>
+       <width>281</width>
+       <height>101</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
@@ -583,7 +567,7 @@
       <item row="0" column="1">
        <widget class="QLineEdit" name="lineEdit_17">
         <property name="text">
-         <string>[1,0.8]</string>
+         <string>1.83</string>
         </property>
        </widget>
       </item>
@@ -597,12 +581,29 @@
       <item row="1" column="1">
        <widget class="QLineEdit" name="lineEdit_18">
         <property name="text">
-         <string>Iout</string>
+         <string>200</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="2" rowspan="2">
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_21">
+        <property name="text">
+         <string>Time(Sec)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_19">
+        <property name="text">
+         <string>0,10,300,600</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" rowspan="3">
        <widget class="QPushButton" name="pushButton_8">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string>thermal drop</string>
         </property>
@@ -617,10 +618,10 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>90</y>
-      <width>311</width>
-      <height>91</height>
+      <x>10</x>
+      <y>100</y>
+      <width>241</width>
+      <height>131</height>
      </rect>
     </property>
     <property name="title">
@@ -631,7 +632,7 @@
       <rect>
        <x>10</x>
        <y>20</y>
-       <width>291</width>
+       <width>221</width>
        <height>63</height>
       </rect>
      </property>
@@ -684,6 +685,75 @@
       </item>
      </layout>
     </widget>
+    <widget class="QCheckBox" name="checkBox_2">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>100</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Open by Excel</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_6">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>100</y>
+      <width>181</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>check Vendor ID</string>
+    </property>
+    <widget class="QPushButton" name="pushButton_9">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>90</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Check</string>
+     </property>
+    </widget>
+    <widget class="QLCDNumber" name="lcdNumber">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>161</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -691,21 +761,19 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1213</width>
+     <width>1763</width>
      <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu2020_08_22">
     <property name="title">
-     <string>2020.08.22</string>
+     <string>2020.08.31</string>
     </property>
    </widget>
    <addaction name="menu2020_08_22"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="resource.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
