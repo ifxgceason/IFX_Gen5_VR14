@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1763, 901)
+        MainWindow.resize(950, 819)
         MainWindow.setSizeIncrement(QtCore.QSize(0, 0))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -285,17 +285,25 @@ class Ui_MainWindow(object):
         font.setPointSize(8)
         self.lcdNumber.setFont(font)
         self.lcdNumber.setObjectName("lcdNumber")
+        self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
+        self.progressBar.setGeometry(QtCore.QRect(580, 670, 171, 23))
+        self.progressBar.setProperty("value", 24)
+        self.progressBar.setTextVisible(False)
+        self.progressBar.setObjectName("progressBar")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1763, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 950, 21))
         self.menubar.setObjectName("menubar")
-        self.menu2020_08_22 = QtWidgets.QMenu(self.menubar)
-        self.menu2020_08_22.setObjectName("menu2020_08_22")
+        self.menuAbout = QtWidgets.QMenu(self.menubar)
+        self.menuAbout.setObjectName("menuAbout")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-        self.menubar.addAction(self.menu2020_08_22.menuAction())
+        self.actionRev2020_09_22 = QtWidgets.QAction(MainWindow)
+        self.actionRev2020_09_22.setObjectName("actionRev2020_09_22")
+        self.menuAbout.addAction(self.actionRev2020_09_22)
+        self.menubar.addAction(self.menuAbout.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -368,7 +376,8 @@ class Ui_MainWindow(object):
         self.checkBox_2.setText(_translate("MainWindow", "Open by Excel"))
         self.groupBox_6.setTitle(_translate("MainWindow", "check Vendor ID"))
         self.pushButton_9.setText(_translate("MainWindow", "Check"))
-        self.menu2020_08_22.setTitle(_translate("MainWindow", "2020.08.31"))
+        self.menuAbout.setTitle(_translate("MainWindow", "About"))
+        self.actionRev2020_09_22.setText(_translate("MainWindow", "Rev2020.09.22"))
 
 
 if __name__ == "__main__":

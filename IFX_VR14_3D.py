@@ -70,6 +70,21 @@ def vr14_3d(rail_name="VCCIN",
             duty_step=10,
             excel=True):
     for vout in vout_list:
+        #create input parameter to DF
+        parameter_dict={"rail_name":rail_name,
+                        "start_freq":start_freq,
+                        "end_freq":end_freq,
+                        "icc_min":icc_min,
+                        "icc_max":icc_max,
+                        "freq_steps_per_decade":freq_steps_per_decade,
+                        "rise_time":rise_time,
+                        "cool_down_delay":cool_down_delay,
+                        "start_duty":start_duty,
+                        "end_duty":end_duty,
+                        "duty_step":duty_step,}
+        parameter_df=pd.DataFrame.from_dict(parameter_dict,orient='index',columns=['value'])
+        parameter_df=parameter_df.reset_index()
+        
         MeasurementAPI().ClearAllMeasurements()    
         print(f"dll verison = {ifx.version()}")
         #detect Infinon device
@@ -238,7 +253,7 @@ def vr14_3d(rail_name="VCCIN",
         dat.SetFanSpeed(1)
 
         # Save the output file...
-        ifx.df1_df2_to_excel(df_vmax,df_vmin,file_name,sheet_name1="Vmax",sheet_name2="Vmin")
+        ifx.df1_df2_df3_to_excel(parameter_df,df_vmax,df_vmin,file_name,sheet_name1="condition",sheet_name2="Vmax",sheet_name3="Vmin")
         #df.to_excel(file_name)
 
         print("Test completed. Data saved to:  ", file_name)
@@ -249,14 +264,14 @@ def vr14_3d(rail_name="VCCIN",
     
 if __name__ == "__main__":
     vr14_3d(rail_name="VCCIN",
-            vout_list=[1.83],
-            start_freq=0.1,
-            end_freq=20,
-            icc_min=61,
-            icc_max=405,
-            freq_steps_per_decade=7,
-            rise_time=2000,
-            cool_down_delay=0,
+            vout_list=[1.83,1.63],
+            start_freq=0.3,
+            end_freq=1,
+            icc_min=10,
+            icc_max=30,
+            freq_steps_per_decade=2,
+            rise_time=263,
+            cool_down_delay=2,
             start_duty=10,
             end_duty=50,
             duty_step=10,

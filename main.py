@@ -8,12 +8,26 @@ import time
 if ifx.detect_process("Gen5.exe"):
     pass
 else:
-    print("please run Gen5 frist")
+    print("please run Gen5 first")
     time.sleep(15)
     sys.exit()
 
 import IFX_VR14_DC_LL
 import IFX_VR14_3D
+
+class myprogpressbar(QThread):
+    updatebar=pyqtSignal(int)
+    def __init__(self):
+        QThread.__init__(self)
+    def __del__(self):
+        self.wait()
+    def run(self):
+        while True:
+            for index in range(1, 101):
+                self.updatebar.emit(index)
+                time.sleep(0.1)
+    def stop(self):
+        self.terminate()
 
 class dc_thread(QThread):
     dc_to_enable_abort = pyqtSignal(bool)    
@@ -69,15 +83,20 @@ class MyMainWindow(QMainWindow,Ui_PyQT_IFX_VR14.Ui_MainWindow):
         self.comboBox.activated.connect(self.qbox)
         self.lcdNumber.setHexMode()
         self.lcdNumber.display(0xFF)
+        
         ## init thread
         self.dc_loadline_thread=dc_thread()
         self.vr3d=vr3d_thread()
         self.dc_thermal_thread=dc_thermal_thread()
+        self.myprogpressbar=myprogpressbar()
 
         ## set signal connection
-        #self.dc_loadline_thread.dc_to_enable_abort.connect(self.set_abort_enable)
-
+        self.myprogpressbar.updatebar.connect(self.update_bar)
+        
         self.start_up()
+    def update_bar(self,data):
+        self.progressBar.setValue(data)
+    
     def update_GUI(self):
         ## get GUI import
         self.rail_name=self.comboBox.currentText()
@@ -109,16 +128,19 @@ class MyMainWindow(QMainWindow,Ui_PyQT_IFX_VR14.Ui_MainWindow):
         self.update_GUI()
         self.runing_items()
         self.vr3d.start()
+        self.myprogpressbar.start()
 
     def dc_thermal_function(self):
         self.update_GUI()
         self.runing_items()
         self.dc_thermal_thread.start()
+        self.myprogpressbar.start()
         
     def dc_loadline_function(self):
         self.update_GUI()
         self.runing_items()        
         self.dc_loadline_thread.start()
+        self.myprogpressbar.start()
 
     def stop_all_thread(self):
         print("====")
@@ -127,11 +149,12 @@ class MyMainWindow(QMainWindow,Ui_PyQT_IFX_VR14.Ui_MainWindow):
         self.dc_loadline_thread.stop()
         self.vr3d.stop()
         self.dc_thermal_thread.stop()
+        self.myprogpressbar.stop()
 
     def check_vendor_id(self):
         svid_addr,svid_bus=ifx.rail_name_to_svid_parameter(self.comboBox.currentText())
         self.vendor_id=ifx.get_svid_reg(svid_addr,svid_bus,0)
-        if self.vendor_id == '13':
+        if self.vendor_id == '13' :
             self.pushButton_8.setEnabled(True)
             self.pushButton_2.setEnabled(True)
             self.pushButton.setEnabled(True)
