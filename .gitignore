@@ -1,4 +1,4 @@
 *.xlsx
 *.csv
 *.xml
-__ifx.py
+*.json
