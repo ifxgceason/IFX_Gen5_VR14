@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>839</width>
-    <height>947</height>
+    <width>1342</width>
+    <height>974</height>
    </rect>
   </property>
   <property name="sizeIncrement">
@@ -17,33 +20,9 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>IFX PyGUI</string>
+   <string>IFX PyGUI 2020.11</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label_10">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>151</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>IFX_LOGO_RGB.jpg</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QTabWidget" name="tabWidget">
     <property name="enabled">
      <bool>true</bool>
@@ -53,7 +32,7 @@
       <x>20</x>
       <y>110</y>
       <width>801</width>
-      <height>781</height>
+      <height>711</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -71,96 +50,90 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>241</width>
+        <width>301</width>
         <height>131</height>
        </rect>
       </property>
       <property name="title">
-       <string>Select your power rail</string>
+       <string>Select platfrom and power rail</string>
       </property>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>221</width>
-         <height>63</height>
-        </rect>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QLabel" name="label_17">
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
+      <layout class="QGridLayout" name="gridLayout_8">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_30">
+         <property name="text">
+          <string>powre rail</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_31">
+         <property name="text">
+          <string>VID step(mV)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QComboBox" name="comboBox">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="comboBox_24">
+         <property name="font">
+          <font>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <item>
           <property name="text">
-           <string>Select power rail</string>
+           <string>10mV</string>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="comboBox">
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <item>
-           <property name="text">
-            <string>VCCIN</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>VCCINFAON</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>VCCFA_EHV</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>VCCFA_EHV_FIVRA</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>PVCCD_HV</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_2">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>120</x>
-         <y>100</y>
-         <width>111</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Open by Excel</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="checkBox_2">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Open by Excel</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="checkBox_10">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>HC bit</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
@@ -324,8 +297,8 @@
        <rect>
         <x>580</x>
         <y>520</y>
-        <width>161</width>
-        <height>51</height>
+        <width>171</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="text">
@@ -335,9 +308,9 @@
      <widget class="QGroupBox" name="groupBox_6">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>330</x>
         <y>10</y>
-        <width>181</width>
+        <width>111</width>
         <height>131</height>
        </rect>
       </property>
@@ -350,7 +323,7 @@
        </property>
        <property name="geometry">
         <rect>
-         <x>80</x>
+         <x>10</x>
          <y>90</y>
          <width>93</width>
          <height>28</height>
@@ -365,7 +338,7 @@
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>161</width>
+         <width>91</width>
          <height>61</height>
         </rect>
        </property>
@@ -635,156 +608,114 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>360</x>
         <y>460</y>
-        <width>181</width>
-        <height>121</height>
+        <width>211</width>
+        <height>131</height>
        </rect>
       </property>
       <property name="title">
-       <string>Misc</string>
+       <string>Save to</string>
       </property>
-      <widget class="QLineEdit" name="lineEdit_13">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>1</x>
-         <y>40</y>
-         <width>120</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>file name</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_3">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>1</x>
-         <y>90</y>
-         <width>152</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Filename includes timestamp</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_15">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>1</x>
-         <y>21</y>
-         <width>34</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Save to</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="checkBox_4">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>1</x>
-         <y>67</y>
-         <width>161</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Filename include rail and Vout</string>
-       </property>
-      </widget>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLineEdit" name="lineEdit_13">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>file name</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkBox_4">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Filename include rail,Vout</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkBox_3">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Filename include timestamp</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QGroupBox" name="groupBox_4">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>460</y>
-        <width>331</width>
+        <width>341</width>
         <height>121</height>
        </rect>
       </property>
       <property name="title">
        <string>others</string>
       </property>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>301</width>
-         <height>91</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_6">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string>Open result folder</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="pushButton_4">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string>Open Result in GUI</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton_5">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string>save parameter to file</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QPushButton" name="pushButton_6">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string>load parameter to GUI</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Open result folder</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Load 3D report to show 3D</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>N/A</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPushButton" name="pushButton_6">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>N/A</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QProgressBar" name="progressBar">
       <property name="geometry">
        <rect>
-        <x>580</x>
-        <y>580</y>
-        <width>171</width>
+        <x>10</x>
+        <y>590</y>
+        <width>741</width>
         <height>23</height>
        </rect>
       </property>
       <property name="value">
-       <number>24</number>
+       <number>0</number>
       </property>
       <property name="textVisible">
        <bool>false</bool>
@@ -795,190 +726,47 @@
      <attribute name="title">
       <string>SetWP</string>
      </attribute>
-     <widget class="QWidget" name="layoutWidget_2">
+     <widget class="QGroupBox" name="groupBox_8">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>10</y>
-        <width>633</width>
-        <height>142</height>
+        <y>0</y>
+        <width>761</width>
+        <height>215</height>
        </rect>
       </property>
+      <property name="title">
+       <string>SetWP init</string>
+      </property>
       <layout class="QGridLayout" name="gridLayout_4">
-       <item row="0" column="2">
-        <widget class="QLabel" name="label_22">
-         <property name="text">
-          <string>WP1</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3">
-        <widget class="QLabel" name="label_23">
-         <property name="text">
-          <string>WP2</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="4">
-        <widget class="QLabel" name="label_24">
-         <property name="text">
-          <string>Static Load</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_25">
-         <property name="text">
-          <string>Rail1</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="comboBox_2">
-         <item>
-          <property name="text">
-           <string>VCCIN</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>VCCINFAON</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>VCCFA_EHV</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>VCCFA_EHV_FIVRA</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="1" column="2">
+       <item row="1" column="3">
         <widget class="QLineEdit" name="lineEdit_20">
          <property name="text">
           <string>1.8</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="3">
-        <widget class="QLineEdit" name="lineEdit_21">
+       <item row="0" column="4">
+        <widget class="QLabel" name="label_23">
+         <property name="text">
+          <string>WP2(Voltage)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="4">
+        <widget class="QLineEdit" name="lineEdit_30">
          <property name="text">
           <string>1.6</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="4">
-        <widget class="QLineEdit" name="lineEdit_22">
-         <property name="text">
-          <string>3</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_26">
-         <property name="text">
-          <string>Rail2</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QComboBox" name="comboBox_3">
-         <item>
-          <property name="text">
-           <string>VCCIN</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>VCCINFAON</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>VCCFA_EHV</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>VCCFA_EHV_FIVRA</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QLineEdit" name="lineEdit_23">
-         <property name="text">
-          <string>1.8</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="3">
-        <widget class="QLineEdit" name="lineEdit_24">
-         <property name="text">
-          <string>1.6</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="4">
-        <widget class="QLineEdit" name="lineEdit_25">
-         <property name="text">
-          <string>5</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_27">
-         <property name="text">
-          <string>Rail3</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QComboBox" name="comboBox_4">
-         <item>
-          <property name="text">
-           <string>VCCIN</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>VCCINFAON</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>VCCFA_EHV</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>VCCFA_EHV_FIVRA</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QLineEdit" name="lineEdit_26">
-         <property name="text">
-          <string>1.8</string>
          </property>
         </widget>
        </item>
        <item row="3" column="3">
-        <widget class="QLineEdit" name="lineEdit_27">
+        <widget class="QLineEdit" name="lineEdit_26">
          <property name="text">
-          <string>1.6</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="4">
-        <widget class="QLineEdit" name="lineEdit_28">
-         <property name="text">
-          <string>4</string>
+          <string>1.8</string>
          </property>
         </widget>
        </item>
@@ -991,1196 +779,903 @@
        </item>
        <item row="4" column="1">
         <widget class="QComboBox" name="comboBox_5">
-         <item>
-          <property name="text">
-           <string>VCCIN</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>VCCINFAON</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>VCCFA_EHV</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>VCCFA_EHV_FIVRA</string>
-          </property>
-         </item>
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="currentIndex">
+          <number>-1</number>
+         </property>
         </widget>
        </item>
-       <item row="4" column="2">
+       <item row="5" column="5">
+        <widget class="QPushButton" name="pushButton_14">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Set loading</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QComboBox" name="comboBox_8">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QLineEdit" name="lineEdit_22">
+         <property name="text">
+          <string>3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="comboBox_3">
+         <property name="currentIndex">
+          <number>-1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QLineEdit" name="lineEdit_23">
+         <property name="text">
+          <string>1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLineEdit" name="lineEdit_21">
+         <property name="text">
+          <string>1.6</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <widget class="QLabel" name="label_24">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Static Load(A)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_27">
+         <property name="text">
+          <string>Rail3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="comboBox_2"/>
+       </item>
+       <item row="3" column="4">
+        <widget class="QLineEdit" name="lineEdit_27">
+         <property name="text">
+          <string>1.6</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_25">
+         <property name="text">
+          <string>Rail1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLabel" name="label_22">
+         <property name="text">
+          <string>WP1(Voltage)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
         <widget class="QLineEdit" name="lineEdit_29">
          <property name="text">
           <string>1.8</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="3">
-        <widget class="QLineEdit" name="lineEdit_30">
-         <property name="text">
-          <string>1.6</string>
+       <item row="1" column="2">
+        <widget class="QComboBox" name="comboBox_6">
+         <property name="enabled">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
-       <item row="4" column="4">
+       <item row="2" column="4">
+        <widget class="QLineEdit" name="lineEdit_24">
+         <property name="text">
+          <string>0.8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QComboBox" name="comboBox_9">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_29">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>VID table(mV)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="3">
+        <widget class="QPushButton" name="pushButton_11">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Read</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="4">
+        <widget class="QPushButton" name="pushButton_10">
+         <property name="text">
+          <string>Write to VR</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5">
+        <widget class="QLineEdit" name="lineEdit_28">
+         <property name="text">
+          <string>4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QComboBox" name="comboBox_7">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_26">
+         <property name="text">
+          <string>Rail2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="5">
         <widget class="QLineEdit" name="lineEdit_31">
          <property name="text">
           <string>3</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="5" rowspan="5">
-        <widget class="QPushButton" name="pushButton_10">
+       <item row="2" column="5">
+        <widget class="QLineEdit" name="lineEdit_25">
          <property name="text">
-          <string>SetWP init</string>
+          <string>5</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="comboBox_4">
+         <property name="currentIndex">
+          <number>-1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1" colspan="2">
+        <widget class="QLabel" name="label_17">
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Only support 10mV/step now</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_32">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>Rail name</string>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="layoutWidget_4">
+     <widget class="QGroupBox" name="groupBox_9">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>190</y>
-        <width>771</width>
-        <height>251</height>
+        <y>220</y>
+        <width>761</width>
+        <height>441</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QCheckBox" name="checkBox">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_10">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_11">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_59">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_60">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QCheckBox" name="checkBox_7">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_12">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_13">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_61">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_62">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QCheckBox" name="checkBox_8">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_14">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_15">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_63">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_64">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QCheckBox" name="checkBox_9">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_16">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_17">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_65">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_66">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_7">
-         <item>
-          <widget class="QCheckBox" name="checkBox_17">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_18">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_19">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_67">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_68">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_9">
-         <item>
-          <widget class="QCheckBox" name="checkBox_18">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_21">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_22">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_69">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_70">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_8">
-         <item>
-          <widget class="QCheckBox" name="checkBox_19">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_20">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_37">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_71">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_72">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QLabel" name="label_36">
-      <property name="geometry">
-       <rect>
-        <x>530</x>
-        <y>170</y>
-        <width>120</width>
-        <height>12</height>
-       </rect>
+      <property name="title">
+       <string>Vector</string>
       </property>
-      <property name="text">
-       <string>delay</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_40">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>170</y>
-        <width>120</width>
-        <height>12</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>rail</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_41">
-      <property name="geometry">
-       <rect>
-        <x>300</x>
-        <y>170</y>
-        <width>120</width>
-        <height>12</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>data</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_39">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>170</y>
-        <width>120</width>
-        <height>12</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>command</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="layoutWidget_3">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>710</y>
-        <width>391</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_17">
-       <item>
-        <widget class="QLabel" name="label_37">
+      <layout class="QGridLayout" name="gridLayout_7">
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_40">
          <property name="text">
-          <string>Loop</string>
+          <string>rail name</string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QLineEdit" name="lineEdit_58">
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_39">
          <property name="text">
-          <string>1</string>
+          <string>command</string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QLabel" name="label_38">
+       <item row="0" column="3">
+        <widget class="QLabel" name="label_42">
          <property name="text">
-          <string>times</string>
+          <string>Payload Data(hex)</string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_12">
+       <item row="0" column="4">
+        <widget class="QLabel" name="label_41">
          <property name="text">
-          <string>Abort</string>
+          <string>Payload Voltage(V)</string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_13">
+       <item row="0" column="5">
+        <widget class="QLabel" name="label_43">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="text">
-          <string>Run</string>
+          <string>VID(mV)</string>
          </property>
         </widget>
        </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget_7">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>440</y>
-        <width>771</width>
-        <height>251</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_10">
-         <item>
-          <widget class="QCheckBox" name="checkBox_10">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_23">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_24">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_44">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_45">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+       <item row="0" column="6">
+        <widget class="QLabel" name="label_36">
+         <property name="text">
+          <string>delay(nSec)</string>
+         </property>
+        </widget>
        </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_11">
-         <item>
-          <widget class="QCheckBox" name="checkBox_11">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_25">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_26">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_46">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_47">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="checkBox">
+         <property name="text">
+          <string>select</string>
+         </property>
+        </widget>
        </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_12">
-         <item>
-          <widget class="QCheckBox" name="checkBox_12">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_27">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_28">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_48">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_49">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="comboBox_10"/>
        </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_13">
-         <item>
-          <widget class="QCheckBox" name="checkBox_13">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_29">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_30">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_50">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_51">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+       <item row="1" column="2">
+        <widget class="QComboBox" name="comboBox_11">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_14">
-         <item>
-          <widget class="QCheckBox" name="checkBox_14">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_31">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_32">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_52">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_53">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+       <item row="1" column="3">
+        <widget class="QLineEdit" name="lineEdit_59">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
        </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_15">
-         <item>
-          <widget class="QCheckBox" name="checkBox_15">
-           <property name="text">
-            <string>select</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_33">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_34">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_54">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_55">
-           <property name="text">
-            <string>1.8</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+       <item row="1" column="4">
+        <widget class="QLineEdit" name="lineEdit_60">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </widget>
        </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_16">
+       <item row="1" column="5">
+        <widget class="QComboBox" name="comboBox_23">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="6">
+        <widget class="QLineEdit" name="lineEdit_81">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCheckBox" name="checkBox_7">
+         <property name="text">
+          <string>select</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="comboBox_12"/>
+       </item>
+       <item row="2" column="2">
+        <widget class="QComboBox" name="comboBox_13"/>
+       </item>
+       <item row="2" column="3">
+        <widget class="QLineEdit" name="lineEdit_61">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QLineEdit" name="lineEdit_62">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QComboBox" name="comboBox_25">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <widget class="QLineEdit" name="lineEdit_86">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QCheckBox" name="checkBox_8">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>select</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="comboBox_14"/>
+       </item>
+       <item row="3" column="2">
+        <widget class="QComboBox" name="comboBox_15"/>
+       </item>
+       <item row="3" column="3">
+        <widget class="QLineEdit" name="lineEdit_63">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <widget class="QLineEdit" name="lineEdit_64">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5">
+        <widget class="QComboBox" name="comboBox_26">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="6">
+        <widget class="QLineEdit" name="lineEdit_85">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QCheckBox" name="checkBox_9">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>select</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="comboBox_16"/>
+       </item>
+       <item row="4" column="2">
+        <widget class="QComboBox" name="comboBox_17"/>
+       </item>
+       <item row="4" column="3">
+        <widget class="QLineEdit" name="lineEdit_65">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="4">
+        <widget class="QLineEdit" name="lineEdit_66">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="5">
+        <widget class="QComboBox" name="comboBox_27">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="6">
+        <widget class="QLineEdit" name="lineEdit_83">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QCheckBox" name="checkBox_17">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>select</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="comboBox_18"/>
+       </item>
+       <item row="5" column="2">
+        <widget class="QComboBox" name="comboBox_19"/>
+       </item>
+       <item row="5" column="3">
+        <widget class="QLineEdit" name="lineEdit_67">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="4">
+        <widget class="QLineEdit" name="lineEdit_68">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="5">
+        <widget class="QComboBox" name="comboBox_28">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="6">
+        <widget class="QLineEdit" name="lineEdit_80">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QCheckBox" name="checkBox_18">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>select</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="comboBox_21"/>
+       </item>
+       <item row="6" column="2">
+        <widget class="QComboBox" name="comboBox_22"/>
+       </item>
+       <item row="6" column="3">
+        <widget class="QLineEdit" name="lineEdit_69">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="4">
+        <widget class="QLineEdit" name="lineEdit_70">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="5">
+        <widget class="QComboBox" name="comboBox_29">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="6">
+        <widget class="QLineEdit" name="lineEdit_84">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QCheckBox" name="checkBox_19">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>select</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QComboBox" name="comboBox_20"/>
+       </item>
+       <item row="7" column="2">
+        <widget class="QComboBox" name="comboBox_37"/>
+       </item>
+       <item row="7" column="3">
+        <widget class="QLineEdit" name="lineEdit_71">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="4">
+        <widget class="QLineEdit" name="lineEdit_72">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="5">
+        <widget class="QComboBox" name="comboBox_30">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="6">
+        <widget class="QLineEdit" name="lineEdit_82">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QCheckBox" name="checkBox_29">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>select</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QComboBox" name="comboBox_49"/>
+       </item>
+       <item row="8" column="2">
+        <widget class="QComboBox" name="comboBox_48"/>
+       </item>
+       <item row="8" column="3">
+        <widget class="QLineEdit" name="lineEdit_97">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="4">
+        <widget class="QLineEdit" name="lineEdit_98">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="5">
+        <widget class="QComboBox" name="comboBox_31">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="6">
+        <widget class="QLineEdit" name="lineEdit_113">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <widget class="QCheckBox" name="checkBox_30">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>select</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="QComboBox" name="comboBox_51"/>
+       </item>
+       <item row="9" column="2">
+        <widget class="QComboBox" name="comboBox_50"/>
+       </item>
+       <item row="9" column="3">
+        <widget class="QLineEdit" name="lineEdit_100">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="4">
+        <widget class="QLineEdit" name="lineEdit_99">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="5">
+        <widget class="QComboBox" name="comboBox_32">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="6">
+        <widget class="QLineEdit" name="lineEdit_114">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QCheckBox" name="checkBox_31">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>select</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <widget class="QComboBox" name="comboBox_52"/>
+       </item>
+       <item row="10" column="2">
+        <widget class="QComboBox" name="comboBox_53"/>
+       </item>
+       <item row="10" column="3">
+        <widget class="QLineEdit" name="lineEdit_101">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="4">
+        <widget class="QLineEdit" name="lineEdit_102">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="5">
+        <widget class="QComboBox" name="comboBox_33">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="6">
+        <widget class="QLineEdit" name="lineEdit_112">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0">
+        <widget class="QCheckBox" name="checkBox_32">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>select</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="1">
+        <widget class="QComboBox" name="comboBox_54"/>
+       </item>
+       <item row="11" column="2">
+        <widget class="QComboBox" name="comboBox_55"/>
+       </item>
+       <item row="11" column="3">
+        <widget class="QLineEdit" name="lineEdit_104">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="4">
+        <widget class="QLineEdit" name="lineEdit_103">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="5">
+        <widget class="QComboBox" name="comboBox_34">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="6">
+        <widget class="QLineEdit" name="lineEdit_116">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
+        <widget class="QCheckBox" name="checkBox_33">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>select</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="1">
+        <widget class="QComboBox" name="comboBox_56"/>
+       </item>
+       <item row="12" column="2">
+        <widget class="QComboBox" name="comboBox_57"/>
+       </item>
+       <item row="12" column="3">
+        <widget class="QLineEdit" name="lineEdit_105">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="4">
+        <widget class="QLineEdit" name="lineEdit_106">
+         <property name="text">
+          <string>1.8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="5">
+        <widget class="QComboBox" name="comboBox_35">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="6">
+        <widget class="QLineEdit" name="lineEdit_115">
+         <property name="text">
+          <string>1000</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="1">
+        <widget class="QPushButton" name="pushButton_15">
+         <property name="text">
+          <string>Clear bus1 alert</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="2">
+        <widget class="QPushButton" name="pushButton_16">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Clear bus2 alert</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="4" colspan="3">
+        <layout class="QHBoxLayout" name="horizontalLayout_17">
          <item>
-          <widget class="QCheckBox" name="checkBox_16">
+          <widget class="QLabel" name="label_37">
            <property name="text">
-            <string>select</string>
+            <string>Loop</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="comboBox_35">
-           <item>
-            <property name="text">
-             <string>VCCIN</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCINFAON</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>VCCFA_EHV_FIVRA</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="comboBox_36">
-           <item>
-            <property name="text">
-             <string>SetWP1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetWP2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>GetReg</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>SetPS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_56">
+          <widget class="QLineEdit" name="lineEdit_58">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
-            <string>1.8</string>
+            <string>1</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_57">
+          <widget class="QLabel" name="label_38">
            <property name="text">
-            <string>1.8</string>
+            <string>times</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_12">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Abort</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_13">
+           <property name="text">
+            <string>Run</string>
            </property>
           </widget>
          </item>
@@ -2189,6 +1684,53 @@
       </layout>
      </widget>
     </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>VR14_Fivra_3D_transient</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>151</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../Gen5_VR14/Gen5_VR14/IFX_LOGO_RGB.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>20</y>
+      <width>481</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>For Early Engineering Evaluation...</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -2196,7 +1738,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>839</width>
+     <width>1342</width>
      <height>26</height>
     </rect>
    </property>
@@ -2206,12 +1748,30 @@
     </property>
     <addaction name="action2020_10"/>
    </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionLoad_Parameter_to_GUI"/>
+    <addaction name="actionSave_Parameter_to_file"/>
+   </widget>
+   <addaction name="menuFile"/>
    <addaction name="menu2020_08_22"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action2020_10">
    <property name="text">
-    <string>2020.10</string>
+    <string>Rev.2020.11</string>
+   </property>
+  </action>
+  <action name="actionLoad_Parameter_to_GUI">
+   <property name="text">
+    <string>Load Parameters to current page</string>
+   </property>
+  </action>
+  <action name="actionSave_Parameter_to_file">
+   <property name="text">
+    <string>Save current page parameters to file</string>
    </property>
   </action>
  </widget>

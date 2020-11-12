@@ -99,7 +99,7 @@ def thermal_drop(rail_name,vout_list,iout,thermal_time_list=[0,10,300,600]):
     return results
                          
 	
-def dcLoadlinetest(DRIVE_ONE_RAIL,svid_bus,svid_addr,Vout,Iout_currents,dtime,svid_reg_value):
+def dcLoadlinetest(DRIVE_ONE_RAIL,svid_bus,svid_addr,Vout,Iout_currents,dtime,svid_reg_value, hc_bit=1):
     MeasurementAPI().ClearAllMeasurements()
     results=pd.DataFrame()
     # Change Fan Speed
@@ -145,9 +145,13 @@ def dcLoadlinetest(DRIVE_ONE_RAIL,svid_bus,svid_addr,Vout,Iout_currents,dtime,sv
       
 
     ## turn on VR13.HC mode
-    print("Turn on VR13.HC bit")
-    data.SetSvidCmdWrite(0,5,0x2A,1,5,2,0,3)
-    data.SetSvidCmdWrite(0,6,0xC2,1,5,2,0,3)
+    if hc_bit ==1:
+        print("Turn on VR13.HC bit")
+        data.SetSvidCmdWrite(0,5,0x2A,1,5,2,0,3)
+        data.SetSvidCmdWrite(0,6,0xC2,1,5,2,0,3)
+    else:  
+        data.SetSvidCmdWrite(0,5,0x2A,1,5,2,0,3)
+        data.SetSvidCmdWrite(0,6,0x82,1,5,2,0,3)        
 
     #set Vout voltage.
     print(f'set Vout to {Vout}V')
@@ -360,7 +364,7 @@ def dcLoadlinetest(DRIVE_ONE_RAIL,svid_bus,svid_addr,Vout,Iout_currents,dtime,sv
     
     return results
 
-def vr14_ifx_dc(rail_name="VCCIN",vout_list=[1.83,1.73],icc_max=100,cool_down_delay=1,LL_point=[1,3,5,7],excel=True):
+def vr14_ifx_dc(rail_name="VCCIN",vout_list=[1.83,1.73],icc_max=100,cool_down_delay=1,LL_point=[1,3,5,7],excel=True, hc_bit=1):
         print(f"dll verison = {ifx.version()}")
 
         for vout in vout_list:
@@ -385,7 +389,7 @@ def vr14_ifx_dc(rail_name="VCCIN",vout_list=[1.83,1.73],icc_max=100,cool_down_de
             dtime=cool_down_delay
 
             Iout=LL_point
-            df2=dcLoadlinetest(rail_name,svid_bus,svid_addr,vout,Iout,dtime,svid_reg_value)
+            df2=dcLoadlinetest(rail_name,svid_bus,svid_addr,vout,Iout,dtime,svid_reg_value, hc_bit)
             svid_reg_df=pd.DataFrame.from_dict(svid_reg_dict,orient='index',columns=['svid_command_code'])
             svid_reg_df=svid_reg_df.reset_index()
             svid_reg_df['svid_command_code']=svid_reg_df['svid_command_code'].apply(int).apply(hex).apply(str)
