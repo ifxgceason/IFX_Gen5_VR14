@@ -82,9 +82,10 @@ def thermal_drop(rail_name,vout_list,iout,thermal_time_list=[0,10,300,600]):
         gen.Generator1SVSC(rail_name,iout, True)
         vout = Measurment.GetVoltageMeanOnce(rail_name)
         time.sleep(1)
+        sleep_time_old=thermal_time_list[0]
         for sleep_time in thermal_time_list:
             print(f"please wait {sleep_time}Sec")
-            time.sleep(sleep_time)
+            time.sleep(sleep_time-sleep_time_old)
             vout = Measurment.GetVoltageMeanOnce(rail_name)
             result_temp['Time']=sleep_time
             result_temp['Vout']=vout
@@ -92,6 +93,7 @@ def thermal_drop(rail_name,vout_list,iout,thermal_time_list=[0,10,300,600]):
             print(f"time={sleep_time},vout={vout}")
             results=results.append(result_temp,ignore_index=True)
             results=pd.DataFrame(results,columns=['Time','Vout','VID'])
+            sleep_time_old=sleep_time
 
     print("thermal test completed")
     gen.Generator1SVSC(rail_name,0, False)
@@ -407,6 +409,13 @@ def vr14_ifx_dc(rail_name="VCCIN",vout_list=[1.83,1.73],icc_max=100,cool_down_de
             ifx.excelSelect(filename,excel)
 
         print("completed")
+
+def set_wp_inti_DC_load(rail_1='NOLOAD', Iout_1=0, rail_2='NOLOAD', Iout_2=0, rail_3='NOLOAD', Iout_3=0, rail_4='NOLOAD', Iout_4=0, loading_on_off=True):
+    gen.Generator1SVSC(rail_1, Iout_1, loading_on_off)
+    gen.Generator2SVSC(rail_2, Iout_2, loading_on_off)
+    gen.Generator3SVSC(rail_3, Iout_3, loading_on_off)
+    gen.Generator4SVSC(rail_4, Iout_4, loading_on_off)
+    pass
 
 if __name__ == "__main__":
 

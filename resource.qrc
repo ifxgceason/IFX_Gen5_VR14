@@ -1,5 +1,5 @@
 <RCC>
   <qresource prefix="newPrefix">
-    <file>ifx.dll</file>
+    <file>IFX_LOGO_RGB.jpg</file>
   </qresource>
 </RCC>
