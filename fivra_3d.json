@@ -1,0 +1,20 @@
+{
+    "fivra_3d_target_vout": "1.6",
+    "fivra_3d_start_frequency": "1.2",
+    "fivra_3d_end_frequency": "888",
+    "fivra_3d_sample_per_decade": "8",
+    "fivra_3d_nw_current_low": "1",
+    "fivra_3d_nw_current_high": "2",
+    "fivra_3d_ne_current_low": "4",
+    "fivra_3d_ne_current_high": "5",
+    "fivra_3d_sw_current_low": "7",
+    "fivra_3d_sw_current_high": "8",
+    "fivra_3d_se_current_low": "10",
+    "fivra_3d_se_current_high": "11",
+    "fivra_3d_nw_slew_rate": "3",
+    "fivra_3d_ne_slew_rate": "6",
+    "fivra_3d_sw_slew_rate": "9",
+    "fivra_3d_se_slew_rate": "12",
+    "fivra_3d_cooldown_delay": "3",
+    "fivra_3d_duty_cycle_list": "23,28"
+}
